@@ -21,4 +21,18 @@ class CMSGalleryPlugin(CMSPluginBase):
         })
         return context
 
+class CMSSliderPlugin(CMSPluginBase):
+    model = GalleryPlugin
+    name = _('Filer Slider')
+    render_template = 'image_gallery/partials/slider.html'
+
+    def render(self, context, instance, placeholder):
+        context.update({
+            'gallery': instance.gallery,
+            'images': instance.gallery.get_folder_images(),
+        })
+        return context
+
 plugin_pool.register_plugin(CMSGalleryPlugin)
+
+plugin_pool.register_plugin(CMSSliderPlugin)

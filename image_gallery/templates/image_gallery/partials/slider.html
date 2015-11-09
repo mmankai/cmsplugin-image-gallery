@@ -1,0 +1,5 @@
+<ul class="image-gallery">
+    {% for image in gallery.get_folder_images %}
+        <li><img src="{% thumbnail image.file 200x200 crop upscale %}" alt=""></li>
+    {% endfor %}
+</ul>

@@ -183,3 +183,25 @@ class GalleryPlugin(CMSPlugin):
         choices=app_settings.DISPLAY_TYPE_CHOICES,
         blank=True,
     )
+
+
+class GalleryPlugin(CMSPlugin):
+    """
+    Plugin model to link to a specific gallery instance.
+
+    :gallery: The gallery instance that this plugin should render
+    :display_type: A string that will be passed to the plugin templates. This
+      allows you to render the gallery differently at different places on your
+      page.
+
+    """
+    gallery = models.ForeignKey(
+        Gallery,
+        verbose_name=_('Gallery'),
+    )
+
+    display_type = models.CharField(
+        max_length=256,
+        choices=app_settings.DISPLAY_TYPE_CHOICES,
+        blank=True,
+    )
